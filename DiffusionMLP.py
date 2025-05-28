@@ -1,7 +1,7 @@
 # diffusion_mlp.py
 import torch
 import torch.nn as nn
-from diffusion.SinusoidalPosEmb import SinusoidalPosEmb
+from SinusoidalPosEmb import SinusoidalPosEmb
 
 class DiffusionMLP(nn.Module):
     def __init__(self, state_dim, action_dim, time_dim=16, hidden_dim=256):
