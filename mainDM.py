@@ -1,6 +1,7 @@
 import torch
 import numpy as np
 import pandas as pd
+import math
 from enviroment import  Environment
 from DiffusionActor import DiffusionActor
 from Agent import TD3
@@ -47,7 +48,7 @@ for episode in range(episodes):
     ep_reward, ep_energy, ep_aoi = 0, 0, 0
     ep_actor, ep_critic = 0, 0
 
-    epsilon = max(epsilon_end, epsilon_start - (episode / epsilon_decay) * (epsilon_start - epsilon_end))
+    epsilon = epsilon_end+(epsilon_start-epsilon_end)*math.exp(-1.0 * episode/30)
 
     for step in range(max_steps):
         if np.random.rand() < epsilon:
